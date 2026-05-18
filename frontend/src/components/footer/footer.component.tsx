@@ -80,7 +80,7 @@ const FooterComponent = () => {
 
               <li>
                 <Link
-                  to="/help-center"
+                  to="/help"
                   className="text-base text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Help Center

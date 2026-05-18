@@ -29,6 +29,8 @@ import EmailValidationComponent from "./components/email_validation/email.valida
 import { USER_ROLE } from "./constants/role";
 import PostListsComponent from "./components/dashboard/posts/post_lists.component";
 import ProfileComponent from "./components/dashboard/profile/profile.component";
+import HelpCenterComponent from "./components/help_center/help_center.component";
+
 import AboutUsComponent from "./components/footer/about-us.tsx";
 import CareerComponent from "./components/footer/career.tsx";
 import ContactUsComponent from "./components/footer/contact-us.tsx";
@@ -213,6 +215,13 @@ function App() {
         <Route path="/pricing" element={<PricingComponent />} />
         <Route path="/explore" element={<ExploreComponent />} />
         <Route
+          path="/help"
+          element={
+            <RootLayout>
+              <HelpCenterComponent />
+            </RootLayout>
+          }
+        />
           path="/bookmarks"
           element={
             <ProtectedRoute

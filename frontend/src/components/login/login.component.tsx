@@ -125,7 +125,7 @@ const LoginComponent = () => {
           </h2>
         </div>
 
-        <div className="bg-slate-50 dark:bg-slate-800/60 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-8 sm:p-10 shadow-2xl">
+        <div className="w-full min-w-0 bg-slate-50 dark:bg-slate-800/60 backdrop-blur-xl border border-slate-200 dark:border-slate-700/50 rounded-2xl p-8 sm:p-10 shadow-2xl">
 
             <button
             onClick={() => window.location.href = "/"}
@@ -139,7 +139,7 @@ const LoginComponent = () => {
           </h3>
 
           <form
-            className="space-y-5"
+            className="w-full space-y-5 "
             onSubmit={handleSubmit(onSubmit)}
           >
 

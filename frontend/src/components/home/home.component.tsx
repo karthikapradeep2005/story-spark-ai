@@ -15,6 +15,20 @@ import PersonalizedRecommendationsComponent from "./personalized_recommendations
 import { isLoggedIn } from "../../services/auth.service";
 import BackToTop from "../ScrollToTopButton";
 
+// Animation configurations to keep TypeScript happy
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+} as const;
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 }
+} as const;
+
 const HomeComponent = () => {
   const isLogin = isLoggedIn();
 
@@ -39,36 +53,37 @@ const HomeComponent = () => {
             <RecommendedWritersComponent />
           </div>
         </aside>
+      </div> {/* <-- Fixed closing tag for the main inner row grid */}
 
-    <motion.div 
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-10">
-        <div className="grid grid-cols-12 items-start gap-8 mb-10">
-          <motion.div variants={itemVariants} className="col-span-12 lg:col-span-8 min-w-0 flex flex-col gap-8">
-            <FeatureComponent />
-            <LatestPostsComponent />
-          </motion.div>
-          <motion.div variants={itemVariants} className="col-span-12 lg:col-span-4 min-w-0">
-            <div className="sticky top-24 flex flex-col gap-6">
-              {isLogin && <FeatureProfileComponent />}
-              {isLogin && <PersonalizedRecommendationsComponent />}
-              <TrendingTopicComponent />
-              <RecommendedWritersComponent />
-            </div>
-          </motion.div>
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-10 pb-10">
+          <div className="grid grid-cols-12 items-start gap-8 mb-10">
+            <motion.div variants={itemVariants} className="col-span-12 lg:col-span-8 min-w-0 flex flex-col gap-8">
+              <FeatureComponent />
+              <LatestPostsComponent />
+            </motion.div>
+            <motion.div variants={itemVariants} className="col-span-12 lg:col-span-4 min-w-0">
+              <div className="sticky top-24 flex flex-col gap-6">
+                {isLogin && <FeatureProfileComponent />}
+                {isLogin && <PersonalizedRecommendationsComponent />}
+                <TrendingTopicComponent />
+                <RecommendedWritersComponent />
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </div>
-      <motion.div variants={itemVariants}><CommunitySpotlightComponent /></motion.div> 
-      <motion.div variants={itemVariants}><ResourceComponent /></motion.div>
-      <motion.div variants={itemVariants}><WriterFeedbackComponent /></motion.div>
-      <motion.div variants={itemVariants}><PricingComponent /></motion.div>
-      <motion.div variants={itemVariants}><StartWritingComponent /></motion.div>
-      <BackToTop />
-    </div>
-    </motion.div>
+        <motion.div variants={itemVariants}><CommunitySpotlightComponent /></motion.div> 
+        <motion.div variants={itemVariants}><ResourceComponent /></motion.div>
+        <motion.div variants={itemVariants}><WriterFeedbackComponent /></motion.div>
+        <motion.div variants={itemVariants}><PricingComponent /></motion.div>
+        <motion.div variants={itemVariants}><StartWritingComponent /></motion.div>
+        <BackToTop />
+      </motion.div>
+    </div> 
   );
 };
 

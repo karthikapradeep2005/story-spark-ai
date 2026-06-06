@@ -4,6 +4,7 @@ import { MenuItem, menuItems } from "./dashboard.utils";
 import { getUserInfo } from "../../services/auth.service";
 // Imported the local ErrorBoundary component to satisfy issue #1326
 import { ErrorBoundary } from "../ErrorBoundary";
+import { useGetProfileInfoQuery } from "../../redux/apis/user.api";
 
 const DashboardLayout: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
